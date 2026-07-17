@@ -2,31 +2,21 @@ e, missing, inconsistent, or ownerless.','No priority without named capacity and
 ]}
 ],margin=.44)
 
-# Hard objection - fuller 1 page
-build_doc(PDF/'Russell-Dudek-Engine-Hard-Objection-Analysis.pdf','Engine hard-objection analysis',[
-{'identity':'Senior Director, Business Operations - Hard-Objection Analysis','title':'The gap, stated plainly','blocks':[
-('callout','Russell has not already held this exact role inside a travel-fintech SaaS company at Engine\'s current scale.'),
-('h2','WHY THE CONCERN MATTERS'),('p','The role requires annual planning, cross-functional prioritization, resource allocation, executive analytics, high-stakes initiative delivery, and a centralized Business Operations team in a fast-growing technology company. Domain and scale pattern recognition matter; the role cannot become a learning exercise at the company\'s expense.'),
-('h2','RISK DECOMPOSITION'),('table',[[ 'Risk','What could go wrong','Evidence / mitigation'],['SaaS scale pattern','Planning or telemetry mechanisms may not fit Engine\'s growth dynamics.','Start with live decisions, inspect current systems, pilot before standardizing.'],['Travel-fintech domain','Important commercial, regulatory, product, or customer constraints could be missed.','Treat domain leaders as authorities; translate rather than presume.'],['Executive influence','A centralized function can lose trust if it arrives with a framework before evidence.','Use tactical empathy, rigorous logic, minimal structure, and visible decision value.'],['Portfolio ownership','Prior leadership roles do not prove direct ownership of Engine\'s annual planning process.','Demonstrate adjacent mechanisms; test on an interview case and pilot commitment.']],[1.45*inch,2.75*inch,3.2*inch],True),
-('h2','TRANSFERABLE EVIDENCE'),('table',[[ 'Environment','Relevant mechanism'],['Vape-Jet','Growth-stage cross-functional operating systems, telemetry, AI-assisted workflows, ownership, and escalation.'],['Amazon','24/7 high-velocity launch, labor planning, throughput visibility, customer-backward cadence, and Lean/Gemba.'],['Compunetics','Director-level engineering, manufacturing, quality, customer delivery, complex programs, controls, and high standards.'],['DudeWorth','AI-readiness, decision criteria, agentic workflows, human authority, evaluation, governance, and adoption.'],['Cardinal','Remote regional operation and distributed CRM, commercial, fulfillment, and logistics workflows.']],[1.25*inch,6.15*inch],True),
-('h2','EVIDENCE BOUNDARY'),('p','Do not claim direct ownership of Engine-scale SaaS annual planning or travel-fintech domain expertise. The case rests on adjacent operating mechanisms, executive translation, consequence, rigor, and the ability to learn without hiding the gap.'),
-('h2','INTERVIEW TEST'),('p','Give Russell one live cross-functional commitment, its known constraints, the current review rhythm, and the available evidence. Ask him to identify the commitment contract, capacity assumptions, leading signals, decision forum, AI-assistance boundary, risks, and proceed/reroute/stop logic. A strong answer should be crisp, evidence-seeking, minimally bureaucratic, and explicit about human authority.'),
-('h2','90-DAY VERIFICATION'),('p','The hiring risk should be tested through one decision-dense pilot forum, a disclosed telemetry baseline, measurable reduction in reporting burden or decision latency, and adoption by initiative owners - not by whether Russell can repeat a favored methodology.')
-]}
-],margin=.48)
-
-
 # Cover letter - one-page role-specific letter
 build_doc(PDF/'Russell-Dudek-Engine-Cover-Letter.pdf','Engine cover letter',[
 {'identity':'Business Operations & AI-Enabled Operating Systems Executive','title':'Senior Director, Business Operations','blocks':[
 ('ps','July 17, 2026<br/>Hiring Committee<br/>Engine'),
 ('p',"Engine is not hiring this leader to add a thicker planning layer. The company is hiring an operating architect who can preserve speed while making strategy, resource allocation, initiative health, and executive decisions more deliberate."),
 ('p',"That is the problem I would come to solve. My thesis is that deliberate speed needs a <b>Commitment Routing System</b>: one lightweight operating layer that turns strategy into explicit outcomes, named DRIs, funded capacity, leading signals, and dated intervention rules. Async pulses should carry the reporting load so MBRs, QBRs, and ELT forums can focus on debate, tradeoffs, and decisions."),
-('p',"I have built adjacent mechanisms across different operating environments. At Vape-Jet, I lead AI-first operating transformation across production, purchasing, quality, support, customer success, engineering issue flow, ERP, CRM, collaboration systems, and machine telemetry. At Amazon, I led launch and execution in a 24/7 customer-backward environment supporting approximately five million second-day orders annually. At Compunetics, I led engineering, manufacturing, quality, customer delivery, and high-reliability technical programs. Through DudeWorth, I design AI-readiness and agentic-workflow systems around value, data, human authority, evaluation, adoption, and governance."),
-('p',"I made the reasoning inspectable at <b>https://russelldudek.github.io/Engine/</b>. The candidate vision includes an interactive Commitment Router, an executive telemetry model, a 90-day entry plan, and a hard-objection analysis. It is a hypothesis for discussion, not a claim about Engine's internal operating architecture."),
-('p',"The strongest reasonable concern is that I have not already held this exact role inside a travel-fintech SaaS company at Engine's current scale. That concern is fair. My case is transferability under consequence: repeatedly making fragmented work visible, building minimal structure, translating technical and business signals into decisions, and creating accountability without slowing the team."),
+('p',"My experience brings together the operating patterns this mandate requires. At Vape-Jet, I lead AI-first operating transformation across production, purchasing, quality, support, customer success, engineering issue flow, ERP, CRM, collaboration systems, and machine telemetry. At Amazon, I led launch and execution in a 24/7 customer-backward environment supporting approximately five million second-day orders annually. At Compunetics, I led engineering, manufacturing, quality, customer delivery, and high-reliability technical programs. Through DudeWorth, I design AI-readiness and agentic-workflow systems around value, data, human authority, evaluation, adoption, and governance."),
+('p',"I made the reasoning inspectable at <b>https://russelldudek.github.io/Engine/</b>. The candidate vision includes an interactive Commitment Router, an executive telemetry model, a role-specific operating artifact, and a 90-day entry plan. Together, they show how I would connect strategy, capacity, evidence, and execution without imposing unnecessary process."),
+('p',"The through-line across my work is consistent: make fragmented work visible, translate technical and business signals into decisions, build the smallest mechanism that changes behavior, and create accountability without slowing the team. That operating range is directly relevant to Engine's next stage of growth."),
 ('p',"I would welcome a rigorous discussion about where Engine's commitments currently lose pace, where resource allocation becomes implicit, and which executive forums could become materially more decision-dense."),
 ('p','Carpe diem,<br/><b>Russell Dudek</b>')
 ]}],margin=.62)
+
+obsolete = PDF/'Russell-Dudek-Engine-Hard-Objection-Analysis.pdf'
+if obsolete.exists():
+    obsolete.unlink()
 
 print('rebuilt')
