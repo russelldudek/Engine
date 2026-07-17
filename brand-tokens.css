@@ -16,3 +16,34 @@
   --shadow-card: 0 10px 30px rgba(16,18,24,.08);
   --max-width: 1220px;
 }
+
+/* Official Engine identity, stored locally under assets/brand/. The text remains
+   in the markup for accessible naming while the verified lockup is displayed. */
+.brand-word {
+  display: block !important;
+  width: 132px;
+  height: 38px;
+  flex: 0 0 132px;
+  overflow: hidden;
+  text-indent: -9999px;
+  white-space: nowrap;
+  background: url("assets/brand/engine-logo-official.svg") center / contain no-repeat;
+}
+
+.doc-header::before {
+  content: "";
+  display: block;
+  width: 142px;
+  height: 41px;
+  margin: 0 0 .35rem auto;
+  background: url("assets/brand/engine-logo-official.svg") center / contain no-repeat;
+}
+
+@media (max-width: 680px) {
+  .brand-word { width: 112px; height: 32px; flex-basis: 112px; }
+  .doc-header::before { width: 126px; height: 36px; }
+}
+
+@media print {
+  .doc-header::before { width: 1.38in; height: .395in; }
+}
