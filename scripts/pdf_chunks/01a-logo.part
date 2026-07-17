@@ -1,0 +1,33 @@
+# Official Engine logo treatment for every generated PDF.
+import base64
+import re
+from reportlab.platypus import Image as RLImage
+
+_logo_svg = (ROOT / 'assets' / 'brand' / 'engine-logo-official.svg').read_text(encoding='utf-8')
+_logo_match = re.search(r'base64,([^\"]+)', _logo_svg)
+if not _logo_match:
+    raise RuntimeError('Embedded Engine logo data was not found.')
+_logo_path = Path('/tmp/engine-logo-official.png')
+_logo_path.write_bytes(base64.b64decode(_logo_match.group(1)))
+
+
+def header(story, identity):
+    logo = RLImage(str(_logo_path), width=1.35*inch, height=.386*inch)
+    identity_stack = [
+        Paragraph('Russell Dudek', R['Name']),
+        Paragraph(identity, R['Identity']),
+    ]
+    lockup = Table([[identity_stack, logo]], colWidths=[5.78*inch, 1.35*inch])
+    lockup.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('ALIGN', (1,0), (1,0), 'RIGHT'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+    ]))
+    story.extend([
+        lockup,
+        Paragraph(f'Pittsburgh, Pennsylvania | 412.287.8640 | russelldudek@gmail.com | linkedin.com/in/russelldudek<br/>{VISION}', R['Contact']),
+        HRFlowable(width='100%', thickness=2.2, color=PINK, spaceAfter=7),
+    ])
