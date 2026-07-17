@@ -1,0 +1,100 @@
+from pathlib import Path
+import base64
+import re
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.units import inch
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, PageBreak, HRFlowable, Image
+from reportlab.lib.styles import ParagraphStyle
+
+ROOT = Path(__file__).resolve().parents[1]
+PDF_DIR = ROOT / 'pdfs'
+PDF_DIR.mkdir(exist_ok=True)
+_logo_svg = (ROOT / 'assets' / 'brand' / 'engine-logo-official.svg').read_text(encoding='utf-8')
+_logo_match = re.search(r'base64,([^\"]+)', _logo_svg)
+if not _logo_match:
+    raise RuntimeError('Embedded Engine logo data was not found.')
+LOGO = Path('/tmp/engine-logo-official.png')
+LOGO.write_bytes(base64.b64decode(_logo_match.group(1)))
+VISION = 'https://russelldudek.github.io/Engine/'
+INK = colors.HexColor('#101218')
+ORANGE = colors.HexColor('#F54A16')
+MUTED = colors.HexColor('#666B75')
+LINE = colors.HexColor('#D7DADF')
+CREAM = colors.HexColor('#FFF8F3')
+TEAL = colors.HexColor('#0F6A6A')
+
+pdfmetrics.registerFont(TTFont('Lato', '/usr/share/fonts/truetype/lato/Lato-Regular.ttf'))
+pdfmetrics.registerFont(TTFont('Lato-Bold', '/usr/share/fonts/truetype/lato/Lato-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('Lato-Heavy', '/usr/share/fonts/truetype/lato/Lato-Heavy.ttf'))
+
+S = {
+    'name': ParagraphStyle('name', fontName='Lato-Heavy', fontSize=19, leading=21, textColor=INK, spaceAfter=1),
+    'identity': ParagraphStyle('identity', fontName='Lato-Bold', fontSize=9.6, leading=11.4, textColor=INK),
+    'contact': ParagraphStyle('contact', fontName='Lato', fontSize=7.0, leading=8.5, textColor=MUTED, spaceAfter=6),
+    'title': ParagraphStyle('title', fontName='Lato-Heavy', fontSize=20, leading=22, textColor=INK, spaceAfter=8),
+    'h2': ParagraphStyle('h2', fontName='Lato-Bold', fontSize=9.6, leading=11.3, textColor=ORANGE, spaceBefore=6, spaceAfter=4),
+    'h3': ParagraphStyle('h3', fontName='Lato-Bold', fontSize=8.8, leading=10.3, textColor=INK, spaceBefore=4, spaceAfter=1),
+    'body': ParagraphStyle('body', fontName='Lato', fontSize=8.1, leading=10.1, textColor=INK, spaceAfter=4),
+    'small': ParagraphStyle('small', fontName='Lato', fontSize=7.2, leading=8.8, textColor=INK, spaceAfter=3),
+    'bullet': ParagraphStyle('bullet', fontName='Lato', fontSize=7.8, leading=9.7, textColor=INK, leftIndent=11, firstLineIndent=-6, spaceAfter=2),
+    'callout': ParagraphStyle('callout', fontName='Lato-Bold', fontSize=9.2, leading=11.5, textColor=INK, backColor=CREAM, borderColor=ORANGE, borderWidth=0, borderPadding=9, spaceAfter=7),
+    'th': ParagraphStyle('th', fontName='Lato-Bold', fontSize=7.0, leading=8.4, textColor=colors.white),
+    'td': ParagraphStyle('td', fontName='Lato', fontSize=6.8, leading=8.2, textColor=INK),
+}
+
+def page_footer(canvas, doc, label):
+    canvas.saveState()
+    canvas.setStrokeColor(LINE)
+    canvas.line(doc.leftMargin, .37*inch, letter[0]-doc.rightMargin, .37*inch)
+    canvas.setFont('Lato', 6.2)
+    canvas.setFillColor(MUTED)
+    canvas.drawString(doc.leftMargin, .21*inch, f'Russell Dudek | {label}')
+    canvas.drawRightString(letter[0]-doc.rightMargin, .21*inch, str(doc.page))
+    canvas.restoreState()
+
+def header(identity):
+    logo = Image(str(LOGO), width=1.25*inch, height=.357*inch)
+    stack = [Paragraph('Russell Dudek', S['name']), Paragraph(identity, S['identity'])]
+    t = Table([[stack, logo]], colWidths=[5.85*inch, 1.25*inch])
+    t.setStyle(TableStyle([
+        ('VALIGN',(0,0),(-1,-1),'TOP'), ('ALIGN',(1,0),(1,0),'RIGHT'),
+        ('LEFTPADDING',(0,0),(-1,-1),0), ('RIGHTPADDING',(0,0),(-1,-1),0),
+        ('TOPPADDING',(0,0),(-1,-1),0), ('BOTTOMPADDING',(0,0),(-1,-1),0),
+    ]))
+    return [t, Paragraph(f'Pittsburgh, Pennsylvania | 412.287.8640 | russelldudek@gmail.com | linkedin.com/in/russelldudek<br/>{VISION}', S['contact']), HRFlowable(width='100%', thickness=2, color=ORANGE, spaceAfter=6)]
+
+def p(text, style='body'): return Paragraph(text, S[style])
+def h2(text): return Paragraph(text, S['h2'])
+def h3(text): return Paragraph(text, S['h3'])
+def bullets(items): return [Paragraph('• ' + x, S['bullet']) for x in items]
+
+def tbl(rows, widths, repeat=1):
+    data=[]
+    for r, row in enumerate(rows):
+        data.append([Paragraph(str(x), S['th'] if r==0 and repeat else S['td']) for x in row])
+    t=Table(data, colWidths=widths, repeatRows=repeat)
+    commands=[
+        ('BOX',(0,0),(-1,-1),.45,LINE), ('INNERGRID',(0,0),(-1,-1),.35,LINE),
+        ('VALIGN',(0,0),(-1,-1),'TOP'), ('LEFTPADDING',(0,0),(-1,-1),6),
+        ('RIGHTPADDING',(0,0),(-1,-1),6), ('TOPPADDING',(0,0),(-1,-1),5), ('BOTTOMPADDING',(0,0),(-1,-1),5),
+    ]
+    if repeat:
+        commands += [('BACKGROUND',(0,0),(-1,0),INK), ('TEXTCOLOR',(0,0),(-1,0),colors.white)]
+    t.setStyle(TableStyle(commands))
+    return t
+
+def build(filename, label, pages, margins=.45):
+    doc=SimpleDocTemplate(str(PDF_DIR/filename), pagesize=letter, leftMargin=margins*inch, rightMargin=margins*inch, topMargin=.38*inch, bottomMargin=.47*inch)
+    story=[]
+    for idx, page in enumerate(pages):
+        if idx: story.append(PageBreak())
+        story += header(page['identity'])
+        if page.get('title'): story.append(p(page['title'],'title'))
+        story += page['flow']
+    doc.build(story, onFirstPage=lambda c,d: page_footer(c,d,label), onLaterPages=lambda c,d: page_footer(c,d,label))
+
+def sec(title, *flow):
+    return [h2(title), *flow]
