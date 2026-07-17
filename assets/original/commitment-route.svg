@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="t d">
+<title id="t">Commitment routing system</title><desc id="d">A five-stage route connecting direction, commitment, capacity, execution signals, and intervention.</desc>
+<rect width="1200" height="500" rx="40" fill="#101218"/>
+<path d="M120 250 C250 60 420 90 540 220 S850 430 1080 190" fill="none" stroke="#F54A16" stroke-width="7" stroke-linecap="round"/>
+<path d="M120 250 C250 60 420 90 540 220 S850 430 1080 190" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="22" stroke-linecap="round"/>
+<g font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle">
+<g transform="translate(120,250)"><circle r="34" fill="#F54A16"/><text y="8">1</text><text y="74" font-size="18">Direction</text></g><g transform="translate(340,120)"><circle r="34" fill="#F54A16"/><text y="8">2</text><text y="74" font-size="18">Commit</text></g><g transform="translate(565,245)"><circle r="34" fill="#F54A16"/><text y="8">3</text><text y="74" font-size="18">Route</text></g><g transform="translate(790,370)"><circle r="34" fill="#F54A16"/><text y="8">4</text><text y="74" font-size="18">Observe</text></g><g transform="translate(1080,190)"><circle r="34" fill="#F54A16"/><text y="8">5</text><text y="74" font-size="18">Intervene</text></g>
+</g></svg>
