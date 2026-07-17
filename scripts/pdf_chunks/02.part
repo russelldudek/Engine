@@ -1,0 +1,47 @@
+esume_pages=[
+{'identity':'Business Operations & AI-Enabled Operating Systems Executive','title':'', 'blocks':[
+('h2','EXECUTIVE PROFILE'),('p','Operator-technologist who makes complex work visible, connects technical and business teams, and builds operating mechanisms that turn strategy and emerging technology into adopted, measurable outcomes. More than 20 years across business operations, high-velocity logistics, manufacturing, quality, distributed operations, AI-enabled workflows, and executive operating cadence.'),
+('h2','ROLE-ALIGNED CAPABILITIES'),('table',[[ 'Enterprise planning and cadence','Resource allocation','Cross-functional big bets','Executive telemetry'],['AI operating leverage','Lean / Gemba / quality','Decision rights','Team building and coaching']],[1.88*inch]*4,False),
+('h2','SELECTED EXPERIENCE'),('h3','Vape-Jet | Director of Operations | 2025-Present'),('bullets',[
+'Lead AI-first operating transformation across production, purchasing, quality, customer success, support, engineering issue flow, ERP/Odoo, Jira, HubSpot, Slack, telemetry, and AI-assisted workflows.',
+'Connect factory, field, customer, and machine-fleet signals into prioritized work, earlier risk detection, cleaner handoffs, dashboards, standard work, training, and accountability.',
+'Build operating visibility across approximately 1,000 fielded robots in a software-enabled robotics and machine-vision environment.',
+'Translate technical constraints and recurring failure modes into ownership, escalation, standard work, and cross-functional learning.'
+]),
+('h3','Amazon | Operations Management / Site Leader | 2014-2018'),('bullets',[
+'Led launch and execution for Amazon Prime Pittsburgh in a 24/7 customer-backward environment supporting approximately five million second-day orders annually.',
+'Built leadership routines, labor planning, throughput visibility, escalation paths, standard work, and operating mechanisms.',
+'Applied Lean and Gemba across safety, quality, throughput, customer experience, and team engagement.',
+'Served on the Prime Now launch team with Whole Foods and contributed to logistics innovation through Prime Air research and Amazon Flex geolocation concepts.'
+]),
+('h3','Compunetics | Director of Operations and Engineering Management | 2000-2013'),('bullets',[
+'Progressed through R&D program management, production management, strategic acquisition, operations management, and director-level leadership.',
+'Led engineering, manufacturing, quality, customer delivery, and complex technical programs in advanced electronics and high-reliability environments.',
+'Built quality systems, standard work, root-cause practices, performance measures, and process controls.',
+'Collaborated with high-consequence customers and partners including DoD, CERN, Intel, and AMD; published industry articles and delivered technical talks.'
+]),
+('h3','DudeWorth | Founder / AI and Automation Advisor | 2017-Present'),('bullets',[
+'Develop AI-readiness and opportunity frameworks assessing value, feasibility, data readiness, governance, adoption burden, reuse, and time-to-value.',
+'Design agentic workflow patterns using structured context, retrieval, AI agents, human judgment, escalation, decision records, evaluation, and governance rails.',
+'Advise on AI-enabled operations, logistics technology, warehouse automation, AMRs, ASRS, cobots, transportation systems, and workflow design.',
+'Build practical operating-model concepts that connect emerging AI capability to decisions, work, adoption, and measurable outcomes.'
+]),
+('h2','ROLE THESIS'),('callout','<b>Deliberate speed needs a commitment routing system.</b> A lightweight operating layer should turn strategy into explicit commitments, funded capacity, visible signals, and timely interventions.')
+]},
+{'identity':'Business Operations & AI-Enabled Operating Systems Executive - Continued','title':'', 'blocks':[
+('h2','ADDITIONAL LEADERSHIP RANGE'),
+('h3','Cardinal Building Products | Regional Director | 2021-2023'),('p',"Built the company's first remote regional operation and modernized distributed customer, CRM, commercial, fulfillment, logistics, digital marketing, SEO, and online-buying workflows. Advanced AI-enhanced transportation-management and route-planning concepts."),
+('h3','ZeusVu | Chief Pilot, Autonomous Systems and Aerial Data Operations | 2018-2022'),('p','Led regulated drone operations across medical, energy, logistics, real-estate, and restricted-airspace contexts with a 100% safety record and no FAA incidents. Developed TensorFlow-based concepts for automated aerial inventory and computer-vision-enabled field intelligence.'),
+('h3','Enviro Social Capital | Chairman of the Board | 2014-2017'),('p','Co-founded and led a public-private impact initiative focused on sustainable infrastructure, green finance, and civic transformation. Helped shape and evaluate a $200 million Social Impact Bond feasibility concept for Pittsburgh green infrastructure.'),
+('h3','IEEE | CMPT and EDS Pittsburgh Chapter Chair | 2012-2016'),('p','Led regional technology programming connecting industry, academia, STEM outreach, electronics, manufacturing, and emerging technology; organized conferences, seminars, business tours, and technical programming.'),
+('h2','SELECTED OPERATING MECHANISMS'),('table',[[
+'<b>Planning and cadence</b><br/>Translate strategy into outcomes, owners, capacity, signals, escalation, and review rhythms.',
+'<b>Decision visibility</b><br/>Connect fragmented signals into dashboards, prioritized work, handoffs, and intervention.'
+],[
+'<b>AI operating leverage</b><br/>Use AI for context, collection, synthesis, workflow support, and evaluation while preserving human authority.',
+'<b>Quality and risk</b><br/>Apply root cause, controls, evidence standards, and escalation in high-reliability environments.'
+],[
+'<b>Team systems</b><br/>Build standard work, coaching routines, training, and feedback loops that make execution repeatable.',
+'<b>Resource fit</b><br/>Match scope, capacity, dependencies, and sequencing before work is treated as committed.'
+]],[3.76*inch,3.76*inch],False),
+('h2','ENGINE ROLE FIT'),('table',[[ 'Mandate','Relevant evidence'],['Company operating cadence','Amazon leadership routines; Vape-Jet cross-system cadence; quality and escalation mechanisms.'],['Resource allocation and big bets','Labor planning, technical-program leadership, distributed operations, prioritization and operating-model design.'],['Executive visibility and analytics','T
